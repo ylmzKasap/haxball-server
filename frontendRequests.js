@@ -17,13 +17,6 @@ room.onPlayerJoin = async (player) => {
     , true);
 }
 
-room.onGameStop = async () => {
-  await make_request('game_end', 'POST', {
-    winner_auth: "",
-    loser_auths: []
-  })
-}
-
 const get_user_info = async (playerAuth) => {
   const userInfo = await make_request('user_info', 'POST', {auth: playerAuth}, true);
   return userInfo;
@@ -43,13 +36,13 @@ const increment_win_lose = async (winner_auth, loser_auths) => {
 const set_admin = async (playerAuth, isAdmin, isSuperAdmin) => {
   await make_request('set_admin', 'POST', {
     auth: playerAuth,
-    is_admin: isAdmin,
+    is_admin: isAdmin, // set true to give admin rights, false to take it away.
     is_super_admin: isSuperAdmin});
 }
 
 const get_top = async (orderType, limit) => {
   const topUsers = await make_request('top_players', 'POST', {
     order_type: orderType, // 'knockouts', 'wins' or 'loses'
-    limit: limit}, true);
+    limit: limit}, true); // get top 'x' players
   return topUsers;
 }

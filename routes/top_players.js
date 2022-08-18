@@ -5,7 +5,7 @@ module.exports = async (req, res) => {
   const { order_type, limit } = req.body;
 
   if (typeof order_type !== "string"
-    ||  !["wins", "loses", "knockouts"].includes(order_type)
+    ||  !["wins", "loses", "knockouts", "win_ratio", "knockout_ratio"].includes(order_type)
     || typeof limit !== "number") {
       return res.status(400).send({error: "Invalid body"});
   }
