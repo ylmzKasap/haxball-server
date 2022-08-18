@@ -6,6 +6,7 @@ async function create_users_table(pool) {
   await pool.query(`CREATE TABLE IF NOT EXISTS users (
       user_id BIGSERIAL PRIMARY KEY NOT NULL,
       user_auth VARCHAR(100) UNIQUE NOT NULL,
+      is_admin BOOLEAN DEFAULT FALSE,
       wins BIGINT DEFAULT 0,
       loses BIGINT DEFAULT 0,
       knockouts BIGINT DEFAULT 0,
