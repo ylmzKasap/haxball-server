@@ -34,7 +34,6 @@ module.exports = async (req, res) => {
     }
 
     // Send existing user info.
-    console.log(user_info);
     await increment_login(db, auth, username);
     return res.status(200).send(user_info);
     

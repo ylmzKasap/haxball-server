@@ -8,6 +8,7 @@ const game_end = require('./routes/game_end');
 const user_info = require('./routes/user_info');
 const knockout = require('./routes/knockout');
 const set_admin = require('./routes/set_admin');
+const top_players = require('./routes/top_players');
 
 module.exports = function getApp (db) {
   const app = express();
@@ -23,6 +24,7 @@ module.exports = function getApp (db) {
   app.post('/game_end', game_end);
   app.post('/knockout', knockout);
   app.post('/set_admin', set_admin);
+  app.post('/top_players', top_players);
 
   return app
 }
