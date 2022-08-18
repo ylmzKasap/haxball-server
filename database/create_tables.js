@@ -17,7 +17,9 @@ async function create_username_table(pool) {
   await pool.query(`CREATE TABLE IF NOT EXISTS usernames (
       username_id BIGSERIAL PRIMARY KEY NOT NULL,
       username_auth VARCHAR(100) REFERENCES users (user_auth) ON DELETE CASCADE,
-      username VARCHAR(50) NOT NULL
+      username VARCHAR(50) NOT NULL,
+      login_count BIGINT DEFAULT 1,
+      last_login_date TIMESTAMP NOT NULL DEFAULT (now()::timestamp(0))
       );`)
       .catch(err => console.log(err));
 }
