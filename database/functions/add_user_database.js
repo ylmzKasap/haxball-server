@@ -6,7 +6,7 @@ module.exports = async function add_user_database(pool, user_auth, username) {
       VALUES
         ($1)
       RETURNING
-        user_auth, is_admin, wins, loses, knockouts
+        user_auth, is_admin, is_super_admin, wins, loses, knockouts
     ),
     username_table AS (
       INSERT INTO usernames
@@ -15,7 +15,7 @@ module.exports = async function add_user_database(pool, user_auth, username) {
         ($2, $3)
     )
     SELECT
-      user_auth, is_admin, wins, loses, knockouts
+      user_auth, is_admin, is_super_admin, wins, loses, knockouts
     FROM
       user_table
   `

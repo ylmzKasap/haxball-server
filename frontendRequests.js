@@ -43,3 +43,13 @@ await fetch('http://localhost:3001/knockout', {
   body: JSON.stringify(
     {auth: ""})
   })
+
+await fetch('http://localhost:3001/set_admin', {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(
+    {auth: "", is_admin: false, is_super_admin: false})
+  })

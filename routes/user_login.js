@@ -21,7 +21,7 @@ module.exports = async (req, res) => {
     const newUserInfo = await add_user_database(db, auth, username);
     await update_timestamp(db, newUserInfo.user_auth);
     return res.status(200).send(newUserInfo);
-    
+
   } else {
     // Check whether the existing user logged in with another username.
     await update_timestamp(db, user_info.user_auth);
@@ -34,6 +34,7 @@ module.exports = async (req, res) => {
     }
 
     // Send existing user info.
+    console.log(user_info);
     await increment_login(db, auth, username);
     return res.status(200).send(user_info);
     

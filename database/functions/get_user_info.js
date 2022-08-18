@@ -1,7 +1,7 @@
 module.exports = async function get_user_info(pool, user_auth) {
   const getQuery = `
     SELECT
-      user_auth, is_admin, wins, loses, knockouts
+      user_auth, is_admin, is_super_admin, wins, loses, knockouts
     FROM
       users
     WHERE

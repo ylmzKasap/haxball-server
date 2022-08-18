@@ -7,6 +7,7 @@ async function create_users_table(pool) {
       user_id BIGSERIAL PRIMARY KEY NOT NULL,
       user_auth VARCHAR(100) UNIQUE NOT NULL,
       is_admin BOOLEAN DEFAULT FALSE,
+      is_super_admin BOOLEAN DEFAULT FALSE,
       wins BIGINT DEFAULT 0,
       loses BIGINT DEFAULT 0,
       knockouts BIGINT DEFAULT 0,
