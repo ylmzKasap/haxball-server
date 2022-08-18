@@ -1,55 +1,41 @@
+async function make_request(path, method, body, convertJson=false) {
+  return fetch(`http://localhost:3001/${path}`, {
+    method: method,
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
+    })
+    .then((res) => convertJson ? res.json() : res);
+}
+
 room.onPlayerJoin = async (player) => {
-  await fetch('http://localhost:3001/user_login', {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(
-    {auth: player.auth,
-    username: player.name})
-  }).then((res) => res.json())
+  await make_request('user_login', 'POST', {
+    auth: player.auth,
+    username: player.name}
+    ), true;
 }
 
 room.onGameStop = async () => {
-  await fetch('http://localhost:3001/game_end', {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(
-    {winner_auth: "",
-    loser_auths: []})
+  await make_request('game_end', 'POST', {
+    winner_auth: "",
+    loser_auths: []
   })
 }
 
-await fetch('http://localhost:3001/user_info', {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(
-    {auth: ""})
-  }).then((res) => res.json())
+const get_user_info = async (playerAuth) => {
+  const userInfo = await make_request('user_info', 'POST', {auth: playerAuth}, true);
+  return userInfo;
+}
 
-await fetch('http://localhost:3001/knockout', {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(
-    {auth: ""})
-  })
+const increment_knockout = async (playerAuth) => {
+  await make_request('knockout', 'POST', {auth: playerAuth});
+}
 
-await fetch('http://localhost:3001/set_admin', {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(
-    {auth: "", is_admin: false, is_super_admin: false})
-  })
+const set_admin = async (playerAuth, isAdmin, isSuperAdmin) => {
+  await make_request('set_admin', 'POST', {
+    auth: playerAuth,
+    is_admin: isAdmin,
+    is_super_admin: isSuperAdmin});
+}
