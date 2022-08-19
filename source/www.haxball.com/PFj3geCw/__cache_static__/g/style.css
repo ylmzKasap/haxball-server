@@ -1,4 +1,5 @@
 html, body {
+  font-family: 'Comic Sans MS';
   height: 100%;
   width: 100%;
   margin: 0;
@@ -9,5 +10,39 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: antiquewhite;
+  background-color: rgb(255, 255, 255);
+}
+
+div {
+  font-size: 1.2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  padding: 5px;
+  color: white;
+}
+
+.room-code {
+  padding: 10px;
+}
+
+.left-blank {
+  margin-left: 20px;
+}
+
+.documentation {
+  margin-bottom: 10px;
+}
+
+.create-room-info {
+  margin-top: 20px;
+  background-color: rgb(225, 225, 225);
+}
+
+.hackerman {
+  margin-top: 5px;
 }
