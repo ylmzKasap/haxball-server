@@ -1,15 +1,3 @@
-async function make_request(path, method, body, convertJson=false) {
-  return fetch(`http://localhost:3001/${path}`, {
-    method: method,
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: method !== "GET" && body ? JSON.stringify(body) : null
-    })
-    .then((res) => convertJson ? res.json() : res);
-}
-
 room.onPlayerJoin = async (player) => {
   await make_request('user_login', 'POST', {
     auth: player.auth,
@@ -17,11 +5,6 @@ room.onPlayerJoin = async (player) => {
       ? player.name.replace(player.name.match(/\s(.*)$/)[0], "")
       : player.name}
     , true);
-}
-
-const get_all_users = async () => {
-  const usersInfo = await make_request('all_users', 'GET', undefined, true);
-  return usersInfo;
 }
 
 const get_user_info = async (playerAuth) => {

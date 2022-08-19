@@ -2091,7 +2091,7 @@ const get_title = (wins) => {
           var userInfo = user_info.filter(x => x.user_auth === userAuth);
           var title = "";
           if (userInfo[0]) {
-            title = get_title(userInfo[0].wins);
+            title = get_title(parseInt(userInfo[0].wins));
           } else {
             title = get_title(0);
           }
