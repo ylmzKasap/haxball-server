@@ -21,7 +21,7 @@ get_all_users().then(res => {user_info = res});
 
 setInterval(() => {
   get_all_users().then(res => {user_info = res});
-}, 1000);
+}, 30000);
 
 const get_title = (wins) => {
   if (wins === 0) {
@@ -2091,7 +2091,8 @@ const get_title = (wins) => {
           var userInfo = user_info.filter(x => x.user_auth === userAuth);
           var title = "";
           if (userInfo[0]) {
-            title = get_title(userInfo[0].wins);
+            title = get_title(parseInt(userInfo[0].wins));
+            console.log(title)
           } else {
             title = get_title(0);
           }

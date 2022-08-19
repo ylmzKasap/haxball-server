@@ -8,9 +8,9 @@ let database = new Pool({connectionString: database_connection});
 const app = routes(database)
 
 async function main () {
-  /* await teardown(database);
+ /*  await teardown(database);
   await setup(database); */
-}
+} 
 
 main()
 
