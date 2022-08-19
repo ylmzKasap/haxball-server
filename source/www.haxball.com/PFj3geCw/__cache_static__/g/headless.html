@@ -3,12 +3,22 @@
 <head>
 	<meta charset="utf-8">
 	<base target="_top"/>
+	<link rel="stylesheet" href="./style.css">
 </head>
 <body>
 	<h1>Headless Host (hacked by hackerman)</h1>
-	<p>Documentation <a href="https://github.com/haxball/haxball-issues/wiki/Headless-Host">here</a></p>
+	<a href="https://github.com/haxball/haxball-issues/wiki/Headless-Host">Documentation</a>
 	<div id="recaptcha"></div>
 	<div id="roomlink"></div>
+	<div class="create-room-info">
+		<div>Create a room copypasta</div>
+		<div class="room-code">var room = HBInit({ roomName: "My room",</div>
+			</br>maxPlayers: 16,
+			</br> noPlayer: true });</p>
+		<p>room.setDefaultStadium("Big");</p>
+		<p>room.setScoreLimit(5);</p>
+		<p>room.setTimeLimit(0);</p>
+	</div>
 	<script src="vendor/pako-jszip.min.js" defer></script>
 	<script src="vendor/json5.min.js" defer></script>
 	<script src="headless-min.js" defer></script>

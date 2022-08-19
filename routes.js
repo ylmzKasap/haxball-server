@@ -9,6 +9,8 @@ const user_info = require('./routes/user_info');
 const knockout = require('./routes/knockout');
 const set_admin = require('./routes/set_admin');
 const top_players = require('./routes/top_players');
+const standing = require('./routes/standing');
+const all_users = require('./routes/all_users');
 
 module.exports = function getApp (db) {
   const app = express();
@@ -19,12 +21,14 @@ module.exports = function getApp (db) {
   app.use(bodyParser.urlencoded({ extended: true }))
 
   app.post('/user_login', user_login);
-  app.post('/user_logout', user_logout)
+  app.post('/user_logout', user_logout);
+  app.get('/all_users', all_users);
   app.post('/user_info', user_info);
   app.post('/game_end', game_end);
   app.post('/knockout', knockout);
   app.post('/set_admin', set_admin);
   app.post('/top_players', top_players);
+  app.post('/standing', standing);
 
   return app
 }

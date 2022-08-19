@@ -5,7 +5,7 @@ async function make_request(path, method, body, convertJson=false) {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(body)
+    body: method !== "GET" && body ? JSON.stringify(body) : null
     })
     .then((res) => convertJson ? res.json() : res);
 }
@@ -13,8 +13,15 @@ async function make_request(path, method, body, convertJson=false) {
 room.onPlayerJoin = async (player) => {
   await make_request('user_login', 'POST', {
     auth: player.auth,
-    username: player.name}
+    username: player.name.match(/\s\(.*\)$/) 
+      ? player.name.replace(player.name.match(/\s(.*)$/)[0], "")
+      : player.name}
     , true);
+}
+
+const get_all_users = async () => {
+  const usersInfo = await make_request('all_users', 'GET', undefined, true);
+  return usersInfo;
 }
 
 const get_user_info = async (playerAuth) => {
@@ -45,4 +52,12 @@ const get_top = async (orderType, limit) => {
     order_type: orderType, // 'knockouts', 'wins' or 'loses'
     limit: limit}, true); // get top 'x' players
   return topUsers;
+}
+
+const get_standing = async (auth, standing_type) => {
+  const userStanding = await make_request('standing', 'POST', {
+    auth: auth,
+    standing_type: standing_type
+  }, true);
+  return userStanding;
 }
