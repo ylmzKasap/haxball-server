@@ -2092,7 +2092,6 @@ const get_title = (wins) => {
           var title = "";
           if (userInfo[0]) {
             title = get_title(parseInt(userInfo[0].wins));
-            console.log(title)
           } else {
             title = get_title(0);
           }
