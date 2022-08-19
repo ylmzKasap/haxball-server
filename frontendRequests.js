@@ -1,8 +1,8 @@
 room.onPlayerJoin = async (player) => {
   await make_request('user_login', 'POST', {
     auth: player.auth,
-    username: player.name.match(/\s\(.*\)$/) 
-      ? player.name.replace(player.name.match(/\s\(.*\)$/)[0], "")
+    username: player.name.match(/\s\([^\(\)]*\)$/) 
+      ? player.name.replace(player.name.match(/\s\([^\(\)]*\)$/)[0], "")
       : player.name}
     , true);
 }
