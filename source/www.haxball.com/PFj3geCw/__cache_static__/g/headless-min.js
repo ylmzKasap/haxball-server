@@ -549,6 +549,7 @@ const get_title = (wins) => {
   };
   H.b = !0;
   H.pb = function (a, b) {
+    // a = string, b= max length (1000)
       return a.length <= b ? a : G.substr(a, 0, b);
   };
   H.hi = function (a) {
@@ -1496,10 +1497,10 @@ const get_title = (wins) => {
           this.Va.Pd(a);
       },
       ec: function (a) {
-          a.A = 0;
-          var b = this.ea + this.pf + this.vg;
-          a.Kf.Z || (b = this.ea);
-          a.cb = b;
+          a.A = 0; // ID
+          var b = this.ea + this.pf + this.vg; // timer?
+          a.Kf.Z || (b = this.ea); // timer?
+          a.cb = b; // timer?
           this.nf(a);
           this.Od();
           0 < this.Ga.length && this.ad(this.Cd(a), 1);
