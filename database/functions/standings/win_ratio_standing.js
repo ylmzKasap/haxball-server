@@ -12,7 +12,7 @@ module.exports = async function get_win_ratio_standing(pool, user_auth) {
     ordered_table AS (
       SELECT
         *,
-        ROW_NUMBER () OVER (ORDER BY win_ratio DESC, wins DESC) AS standing
+        ROW_NUMBER () OVER (ORDER BY win_ratio DESC, wins DESC, loses ASC) AS standing
       FROM
         ratio_table
     ),
