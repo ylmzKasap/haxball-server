@@ -1,7 +1,7 @@
 const cors = require('cors');
 const express = require('express');
-
 const bodyParser = require('body-parser');
+
 const user_login = require('./routes/user_login');
 const user_logout = require('./routes/user_logout');
 const game_end = require('./routes/game_end');

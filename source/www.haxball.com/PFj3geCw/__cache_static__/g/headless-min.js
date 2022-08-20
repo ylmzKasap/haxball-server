@@ -24,44 +24,88 @@ setInterval(() => {
   get_all_users().then(res => {user_info = res});
 }, 30000);
 
-const get_title = (wins) => {
+const get_title = (wins) => { 
+    let titleInfo = {
+        title: "", // Player's title based on the win count.
+        next_title: "", // Remaning wins for the next title (string) -> null after 1000 wins.
+        rank_up: false // Player has ranked up (boolean)
+    }
+
   if (wins === 0) {
-  return "💩Ağır Acemi"
+    titleInfo.title = "💩Ağır Acemi"
+    titleInfo.next_title = "1"
+    titleInfo.rank_up = false
   } else if (wins >= 1 && wins < 5) {
-  return "🧻Acemi"
+    titleInfo.title = "🧻Acemi"
+    titleInfo.next_title = `${5 - wins}`
+    titleInfo.rank_up = wins === 1
   } else if (wins >= 5 && wins < 10) {
-  return "🟧Yeni Yetme"
+    titleInfo.title = "🟧Yeni Yetme"
+    titleInfo.next_title = `${10 - wins}`
+    titleInfo.rank_up = wins === 5
   } else if (wins >= 10 && wins < 15) {
-  return "🟨Toy"
+    titleInfo.title = "🟨Toy"
+    titleInfo.next_title = `${15 - wins}`
+    titleInfo.rank_up = wins === 10
   } else if (wins >= 15 && wins < 20) {
-  return "⬜Çakma Pehlivan"
+    titleInfo.title = "⬜Çakma Pehlivan"
+    titleInfo.next_title = `${20 - wins}`
+    titleInfo.rank_up = wins === 15
   } else if (wins >= 20 && wins < 25) {
-  return "⬛Amatör Pehlivan"
+    titleInfo.title = "⬛Amatör Pehlivan"
+    titleInfo.next_title = `${25 - wins}`
+    titleInfo.rank_up = wins === 20
   } else if (wins >= 25 && wins < 30) {
-  return "🟩Pehlivan"
+    titleInfo.title = "🟩Pehlivan"
+    titleInfo.next_title = `${30 - wins}`
+    titleInfo.rank_up = wins === 25
   } else if (wins >= 30 && wins < 35) {
-  return "👳‍♂️Has Pehlivan"
+    titleInfo.title = "👳‍♂️Has Pehlivan"
+    titleInfo.next_title = `${35 - wins}`
+    titleInfo.rank_up = wins === 30
   } else if (wins >= 35 && wins < 40) {
-  return "🤠Ulu Pehlivan"
+    titleInfo.title = "🤠Ulu Pehlivan"
+    titleInfo.next_title = `${40 - wins}`
+    titleInfo.rank_up = wins === 35
   } else if (wins >= 40 && wins < 60) {
-  return "💥Baş Pehlivan"
+    titleInfo.title = "💥Baş Pehlivan"
+    titleInfo.next_title = `${60 - wins}`
+    titleInfo.rank_up = wins === 40
   } else if (wins >= 60 && wins < 90) {
-  return "😎Destansı Pehlivan"
+    titleInfo.title = "😎Destansı Pehlivan"
+    titleInfo.next_title = `${90 - wins}`
+    titleInfo.rank_up = wins === 60
   } else if (wins >= 90 && wins < 150) {
-  return "⭐Efsanevi Pehlivan"
+    titleInfo.title = "⭐Efsanevi Pehlivan"
+    titleInfo.next_title = `${150 - wins}`
+    titleInfo.rank_up = wins === 90
   } else if (wins >= 150 && wins < 250) {
-  return "💎Mega Pehlivan"
+    titleInfo.title = "💎Mega Pehlivan"
+    titleInfo.next_title = `${250 - wins}`
+    titleInfo.rank_up = wins === 150
   } else if (wins >= 250 && wins < 400) {
-  return "🥇Ultra Pehlivan🥇"
+    titleInfo.title = "🥇Ultra Pehlivan🥇"
+    titleInfo.next_title = `${400 - wins}`
+    titleInfo.rank_up = wins === 250
   } else if (wins >= 400 && wins < 600) {
-  return "🤼‍♂️Pehlivansavar🤼‍♂️"
+    titleInfo.title = "🤼‍♂️Pehlivansavar🤼‍♂️"
+    titleInfo.next_title = `${600 - wins}`
+    titleInfo.rank_up = wins === 400
   } else if (wins >= 600 && wins < 800) {
-  return "🔥Ocak Söndürücü🔥"
+    titleInfo.title = "🔥Ocak Söndürücü🔥"
+    titleInfo.next_title = `${800 - wins}`
+    titleInfo.rank_up = wins === 600
   } else if (wins >= 800 && wins < 1000) {
-  return "⚡Minder Bükücü⚡"
+    titleInfo.title = "⚡Minder Bükücü⚡"
+    titleInfo.next_title = `${1000 - wins}`
+    titleInfo.rank_up = wins === 800
   } else if (wins >= 1000) {
-  return "🏆Minder Tanrısı🏆"
+    titleInfo.title = "🏆Minder Tanrısı🏆"
+    titleInfo.next_title = null
+    titleInfo.rank_up = wins === 1000
   }
+
+  return titleInfo;
 }
 
 window.parent.make_request = make_request;
@@ -2100,11 +2144,11 @@ window.parent.make_request = make_request;
           var d = c.kb();
           var userAuth = A.ub.get(a).tg;
           var userInfo = user_info.filter(x => x.user_auth === userAuth);
-          var title = "";
+          var title = {title: ""};
           if (userInfo[0]) {
-            title = get_title(parseInt(userInfo[0].wins));
+            title = get_title(parseInt(userInfo[0].wins)).title;
           } else {
-            title = get_title(0);
+            title = get_title(0).title;
           }
           if (25 < d.length) throw new l("name too long");
           d = d + ` (${title})`;
