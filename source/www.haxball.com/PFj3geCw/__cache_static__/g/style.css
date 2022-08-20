@@ -10,11 +10,24 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: rgb(255, 255, 255);
+  background: rgb(42, 42, 42);
+  color: white;
 }
 
 div {
   font-size: 1.2rem;
+}
+
+h1 {
+  margin-top: auto;
+}
+
+a:link {
+  color: rgb(86 238 164)
+}
+
+a:visited {
+  color: rgb(208, 45, 241);;
 }
 
 .header {
@@ -44,5 +57,5 @@ div {
 }
 
 .hackerman {
-  margin-top: 5px;
+  margin-top: auto;
 }

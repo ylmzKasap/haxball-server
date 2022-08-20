@@ -1,3 +1,5 @@
+const roomName = "Küfürsüz eğlence muzaffer farkıyla";
+
 async function make_request(path, method, body, convertJson=false) {
   return fetch(`http://localhost:3001/${path}`, {
     method: method,
@@ -9,7 +11,6 @@ async function make_request(path, method, body, convertJson=false) {
     })
     .then((res) => convertJson ? res.json() : res);
 }
-
 
 const get_all_users = async () => {
   const usersInfo = await make_request('all_users', 'GET', undefined, true);
@@ -1808,6 +1809,14 @@ const get_title = (wins) => {
               window.parent.HBInit = y.Th;
               var a = window.parent.onHBLoaded;
               null != a && a();
+              window.parent.room = window.parent.HBInit({
+                roomName: roomName,
+                maxPlayers: 16,
+                noPlayer: true }
+            );  
+            window.parent.room.setDefaultStadium("Big");
+            window.parent.room.setScoreLimit(5);
+            window.parent.room.setTimeLimit(0);
           });
       y.Ih = window.document.getElementById("roomlink");
   };
