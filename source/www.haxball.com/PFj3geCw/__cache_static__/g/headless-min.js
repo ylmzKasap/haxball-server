@@ -1,4 +1,4 @@
-const roomName = "Küfürsüz eğlence muzaffer farkıyla";
+const roomName = "🤼‍♂️ 129. KIRKPINAR YAĞLI GÜREŞLERİ 🤼‍♂️";
 
 async function make_request(path, method, body, convertJson=false) {
   return fetch(`http://localhost:3001/${path}`, {
@@ -52,17 +52,19 @@ const get_title = (wins) => {
   } else if (wins >= 150 && wins < 250) {
   return "💎Mega Pehlivan"
   } else if (wins >= 250 && wins < 400) {
-  return "🥇Ultra Pehlivan"
+  return "🥇Ultra Pehlivan🥇"
   } else if (wins >= 400 && wins < 600) {
-  return "🤼‍♂️Pehlivansavar"
+  return "🤼‍♂️Pehlivansavar🤼‍♂️"
   } else if (wins >= 600 && wins < 800) {
-  return "🔥Ocak Söndürücü"
+  return "🔥Ocak Söndürücü🔥"
   } else if (wins >= 800 && wins < 1000) {
-  return "⚡Minder Bükücü"
+  return "⚡Minder Bükücü⚡"
   } else if (wins >= 1000) {
-  return "🏆Minder tanrısı"
+  return "🏆Minder Tanrısı🏆"
   }
 }
+
+window.parent.make_request = make_request;
 
 (function (cb) {
   function Ra() {}

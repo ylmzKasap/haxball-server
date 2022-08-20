@@ -6,8 +6,13 @@ async function increment_win(pool, user_auth) {
       wins = wins + 1
     WHERE
       user_auth = $1
+    RETURNING
+      wins
   `
-  await pool.query(updateQuery, [user_auth]);
+  const user_win = await pool.query(updateQuery, [user_auth])
+    .then(res => res.rows[0]);
+
+  return user_win;
 }
 
 async function increment_lose(pool, user_auth) {

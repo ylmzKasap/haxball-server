@@ -10,11 +10,16 @@ module.exports = async (req, res) => {
       return res.status(400).send()
   }
 
-  await increment_win(db, winner_auth);
+  const winner_wins = await increment_win(db, winner_auth);
+
+  if (!winner_wins.wins) {
+    res.status(400).send({error: "Something went wrong"});
+  }
 
   for (let loser of loser_auths) {
     increment_lose(db, loser);
   }
 
-  return res.status(200).send();
+  console.log(winner_wins);
+  return res.status(200).send(winner_wins);
 }

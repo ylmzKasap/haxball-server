@@ -1,4 +1,4 @@
-room.onPlayerJoin = async (player) => {
+const user_login = async (player) => {
   await make_request('user_login', 'POST', {
     auth: player.auth,
     username: player.name.match(/\s\([^\(\)]*\)$/) 
@@ -7,20 +7,25 @@ room.onPlayerJoin = async (player) => {
     , true);
 }
 
+const get_all_users = async () => {
+  const usersInfo = await make_request('all_users', 'GET', undefined, true);
+  return usersInfo;
+}
+
 const get_user_info = async (playerAuth) => {
   const userInfo = await make_request('user_info', 'POST', {auth: playerAuth}, true);
   return userInfo;
 }
 
-const increment_knockout = async (playerAuth) => {
-  await make_request('knockout', 'POST', {auth: playerAuth});
-}
-
 const increment_win_lose = async (winner_auth, loser_auths) => {
-  await make_request('game_end', 'POST', {
+  return await make_request('game_end', 'POST', {
     winner_auth: winner_auth,
     loser_auths: loser_auths
-  });
+  }, true);
+}
+
+const increment_knockout = async (playerAuth) => {
+  await make_request('knockout', 'POST', {auth: playerAuth});
 }
 
 const set_admin = async (playerAuth, isAdmin, isSuperAdmin) => {
