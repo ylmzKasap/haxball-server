@@ -20,6 +20,5 @@ module.exports = async (req, res) => {
     increment_lose(db, loser);
   }
 
-  console.log(winner_wins);
   return res.status(200).send(winner_wins);
 }
