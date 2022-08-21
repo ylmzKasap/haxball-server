@@ -36,16 +36,14 @@ const set_admin = async (playerAuth, isAdmin, isSuperAdmin) => {
 }
 
 const get_top = async (orderType, limit) => {
-  const topUsers = await make_request('top_players', 'POST', {
+  return await make_request('top_players', 'POST', {
     order_type: orderType, // 'knockouts', 'wins' or 'loses'
     limit: limit}, true); // get top 'x' players
-  return topUsers;
 }
 
 const get_standing = async (auth, standing_type) => {
-  const userStanding = await make_request('standing', 'POST', {
+  return await make_request('standing', 'POST', {
     auth: auth,
     standing_type: standing_type
   }, true);
-  return userStanding;
 }
