@@ -18,6 +18,10 @@ const get_all_users = async () => {
 let user_info = {}
 get_all_users().then(res => {user_info = res});
 
+const set_all_users = (new_user_info) => {
+    user_info = new_user_info;
+}
+
 setInterval(() => {
   get_all_users().then(res => {user_info = res});
 }, 30000);
@@ -108,6 +112,8 @@ const get_title = (wins) => {
 
 window.parent.make_request = make_request;
 window.parent.get_title = get_title;
+window.parent.set_all_users = set_all_users;
+window.parent.get_user_info = get_user_info;
 
 (function (cb) {
   function Ra() {}
