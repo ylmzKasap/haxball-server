@@ -107,6 +107,7 @@ const get_title = (wins) => {
 }
 
 window.parent.make_request = make_request;
+window.parent.get_title = get_title;
 
 (function (cb) {
   function Ra() {}
