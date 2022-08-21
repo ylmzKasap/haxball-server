@@ -1858,7 +1858,7 @@ window.parent.make_request = make_request;
               window.parent.room = window.parent.HBInit({
                 roomName: roomName,
                 maxPlayers: 16,
-				public: true,
+                public: true,
                 noPlayer: true }
             );  
             window.parent.room.setDefaultStadium("Big");
