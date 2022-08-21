@@ -113,7 +113,7 @@ const get_title = (wins) => {
 window.parent.make_request = make_request;
 window.parent.get_title = get_title;
 window.parent.set_all_users = set_all_users;
-window.parent.get_user_info = get_user_info;
+window.parent.get_all_users = get_all_users;
 
 (function (cb) {
   function Ra() {}
