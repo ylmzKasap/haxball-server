@@ -2156,6 +2156,7 @@ window.parent.get_all_users = get_all_users;
           null != u.T(a) && ((a = I.V(a, "Bad actor", !1)), A.ec(a));
       };
       A.lh = function (a, c) {
+        // Player join //
           var d = c.kb();
           var userAuth = A.ub.get(a).tg;
           var userInfo = user_info.filter(x => x.user_auth === userAuth);
@@ -2171,8 +2172,11 @@ window.parent.get_all_users = get_all_users;
           if (3 < e.length) throw new l("country too long");
           var f = c.Xa();
           if (null != f && 2 < f.length) throw new l("avatar too long");
+          // a: player id // d: player name // e: country // f: avatar
           d = R.V(a, d, e, f);
+          // R.v -> Create player object.
           A.ec(d);
+          // A.ec -> Add player to the room.       
           b();
       };
       A.mh = function (a) {

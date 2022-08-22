@@ -5,18 +5,20 @@ module.exports = async function get_top_x_players(pool, order_type, limit) {
   if (order_type === 'win_ratio' || order_type === 'knockout_ratio') {
     const orderColumn = order_type === 'win_ratio' ? 'wins' : 'knockouts';
     getQuery = `
-      SELECT 
-        user_auth,
-        wins,
-        loses,
-        ${orderColumn === 'knockouts' ? 'knockouts,' : ''}
-        ROUND(${orderColumn}::numeric / COALESCE(NULLIF(wins + loses, 0), 1), 2)
-        ${orderColumn === 'wins' ? " * 100" : ""} AS ${order_type}
-      FROM
-        users
-      ORDER BY
-        ${order_type} DESC, wins DESC
-      LIMIT ${limit};
+        SELECT 
+          user_auth,
+          wins,
+          loses,
+          ${orderColumn === 'knockouts' ? 'knockouts,' : ''}
+          ROUND(${orderColumn}::numeric / COALESCE(NULLIF(wins + loses, 0), 1), 2)
+          ${orderColumn === 'wins' ? " * 100" : ""} AS ${order_type}
+        FROM
+          users
+        WHERE
+          wins + loses > 10
+        ORDER BY
+          ${order_type} DESC, wins DESC
+        LIMIT ${limit};
     `
   }
   else {
