@@ -2176,7 +2176,7 @@ window.parent.get_all_users = get_all_users;
           d = R.V(a, d, e, f);
           // R.v -> Create player object.
           A.ec(d);
-          // A.ec -> Add player to the room.       
+          // A.ec -> Add player to the room.      
           b();
       };
       A.mh = function (a) {
@@ -2214,6 +2214,7 @@ window.parent.get_all_users = get_all_users;
       };
       u.xf = function (a) {
           var b = D.onGameStart;
+          // Map players A.Fa.ca[0]
           null != b && b(f(a));
       };
       u.dd = function (a) {

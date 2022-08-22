@@ -15,12 +15,14 @@ module.exports = async function get_win_ratio_standing(pool, user_auth) {
         ROW_NUMBER () OVER (ORDER BY win_ratio DESC, wins DESC, loses ASC) AS standing
       FROM
         ratio_table
+      WHERE wins + loses > 30
     ),
     all_player_count AS (
       SELECT
         COUNT(*) as total_players
       FROM
         users
+      WHERE wins + loses > 30
     )
     SELECT
       user_auth, wins, loses, win_ratio, standing, total_players
