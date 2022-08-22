@@ -15,7 +15,7 @@ module.exports = async function get_top_x_players(pool, order_type, limit) {
         FROM
           users
         WHERE
-          wins + loses > 10
+          wins + loses > 30
         ORDER BY
           ${order_type} DESC, wins DESC
         LIMIT ${limit};
