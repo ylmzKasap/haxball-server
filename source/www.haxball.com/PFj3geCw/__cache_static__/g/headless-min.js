@@ -1,3 +1,40 @@
+
+window.parent.PlayerList = [{
+	id: 0,
+    name: "console",
+    auth: "",
+    conn: "",
+	label: "",
+	ammo: 0,
+	canFire: true,
+	isCollecting: 0,
+	ko: 0,
+	wins: 0,
+	loses: 0,
+	tokatlayan: 0,
+	vurulan: false,
+	round: {
+		KOs: 0,
+		lose: null,
+		speed_multiplier: 1
+	},
+	afk: 0,
+	activity: false,
+	avatar: "",
+	tempAvatar: "",
+	timer: {
+		killTimer: 0,
+		ghostTimer: 0,
+	},
+	dashPower: 0,
+	superadmin: false,
+	muted: false
+
+}]
+
+
+
+
 async function make_request(path, method, body, convertJson=false) {
   return fetch(`http://localhost:3001/${path}`, {
     method: method,
@@ -1876,6 +1913,10 @@ window.parent.get_all_users = get_all_users;
           )
           .then(function () {
               window.parent.HBInit = y.Th;
+              window.parent.room = window.parent.HBInit({ roomName: "🤼‍♂️117. GELENEKSEL GÜREŞ TURNUVALARI🤼‍♂️",
+              maxPlayers: 16,
+              noPlayer: true,
+              public: true});
               var a = window.parent.onHBLoaded;
               null != a && a();
           });
@@ -3970,6 +4011,31 @@ window.parent.get_all_users = get_all_users;
       },
       P: function (a) {
           a.ya(this.input);
+
+          function speedCalculator(r) {
+            let sm = ((55-(r**2)/r+150)-100)
+            if (sm < 0) sm = 0
+            if (sm > 200) sm = 200
+            return sm/100
+          }
+
+          var j = this.input.toString(2).padStart(5,0).split("")
+          let kicking = j[0] == "1" ? 0.7 : 1
+          let diagonal = (j[1] == "1" ^ j[2] == "1")&&(j[3] == "1" ^ j[4] == "1") ? 1/Math.sqrt(2) : 1
+
+          let playerDisc = window.parent.room.getPlayerDiscProperties(this.A)
+            if (playerDisc != undefined) {
+                let speedMultiplier = speedCalculator(playerDisc.radius)
+				let playerMultiplier = window.parent.PlayerList[this.A].round.speed_multiplier
+                let realSpeed = speedMultiplier*playerMultiplier*0.1
+                let jj = {
+                    xgravity: ((parseInt(j[1]))*realSpeed+(parseInt(j[2]))*-realSpeed)*kicking*diagonal,
+                    ygravity: ((parseInt(j[3]))*realSpeed+(parseInt(j[4]))*-realSpeed)*kicking*diagonal
+                  }
+                  window.parent.room.setPlayerDiscProperties(this.A, jj)
+            }
+
+            
       },
       W: function (a) {
           this.input = a.Lb();
