@@ -28,7 +28,9 @@ window.parent.PlayerList = [{
 	},
 	dashPower: 0,
 	superadmin: false,
-	muted: false
+	muted: false,
+    xinput: 0,
+    yinput: 0
 
 }]
 
@@ -1913,7 +1915,7 @@ window.parent.get_all_users = get_all_users;
           )
           .then(function () {
               window.parent.HBInit = y.Th;
-              window.parent.room = window.parent.HBInit({ roomName: "🤼‍♂️117. GELENEKSEL GÜREŞ TURNUVALARI🤼‍♂️",
+              window.parent.room = window.parent.HBInit({ roomName: "🤼‍♂️ 129. GELENEKSEL GÜREŞ TURNUVALARI🤼‍♂️",
               maxPlayers: 16,
               noPlayer: true,
               public: true});
@@ -4027,11 +4029,14 @@ window.parent.get_all_users = get_all_users;
             if (playerDisc != undefined) {
                 let speedMultiplier = speedCalculator(playerDisc.radius)
 				let playerMultiplier = window.parent.PlayerList[this.A].round.speed_multiplier
-                let realSpeed = speedMultiplier*playerMultiplier*0.1
+                let realSpeed = (0.07 + (0.1*speedMultiplier))*playerMultiplier
                 let jj = {
                     xgravity: ((parseInt(j[1]))*realSpeed+(parseInt(j[2]))*-realSpeed)*kicking*diagonal,
                     ygravity: ((parseInt(j[3]))*realSpeed+(parseInt(j[4]))*-realSpeed)*kicking*diagonal
                   }
+                  window.parent.PlayerList[this.A].xinput = jj.xgravity == 0 ? 0 : Math.abs(jj.xgravity)/jj.xgravity
+                  window.parent.PlayerList[this.A].yinput = jj.ygravity == 0 ? 0 : Math.abs(jj.ygravity)/jj.ygravity
+                  
                   window.parent.room.setPlayerDiscProperties(this.A, jj)
             }
 
