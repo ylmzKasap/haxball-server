@@ -72,97 +72,147 @@ const get_title = (wins) => {
         rank_up: false // Player has ranked up (boolean)
     }
 
-  if (wins === 0) {
-    titleInfo.title = "💩Ağır Acemi"
-    titleInfo.avatar = "💩"
-    titleInfo.next_title = "1"
-    titleInfo.rank_up = false
-  } else if (wins >= 1 && wins < 5) {
-    titleInfo.title = "🧻Acemi"
-    titleInfo.avatar = "🧻"
-    titleInfo.next_title = `${5 - wins}`
-    titleInfo.rank_up = wins === 1
-  } else if (wins >= 5 && wins < 10) {
-    titleInfo.title = "🟧Yeni Yetme"
-    titleInfo.avatar = "🟧"
-    titleInfo.next_title = `${10 - wins}`
-    titleInfo.rank_up = wins === 5
-  } else if (wins >= 10 && wins < 15) {
-    titleInfo.title = "🟨Toy"
-    titleInfo.avatar = "🟨"
-    titleInfo.next_title = `${15 - wins}`
-    titleInfo.rank_up = wins === 10
-  } else if (wins >= 15 && wins < 20) {
-    titleInfo.title = "⬜Çakma Pehlivan"
-    titleInfo.avatar = "⬜"
-    titleInfo.next_title = `${20 - wins}`
-    titleInfo.rank_up = wins === 15
-  } else if (wins >= 20 && wins < 25) {
-    titleInfo.title = "⬛Amatör Pehlivan"
-    titleInfo.avatar = "⬛"
-    titleInfo.next_title = `${25 - wins}`
-    titleInfo.rank_up = wins === 20
-  } else if (wins >= 25 && wins < 30) {
-    titleInfo.title = "🟩Pehlivan"
-    titleInfo.avatar = "🟩"
-    titleInfo.next_title = `${30 - wins}`
-    titleInfo.rank_up = wins === 25
-  } else if (wins >= 30 && wins < 35) {
-    titleInfo.title = "👳‍♂️Has Pehlivan"
-    titleInfo.avatar = "👳‍♂️"
-    titleInfo.next_title = `${35 - wins}`
-    titleInfo.rank_up = wins === 30
-  } else if (wins >= 35 && wins < 40) {
-    titleInfo.title = "🤠Ulu Pehlivan"
-    titleInfo.avatar = "🤠"
-    titleInfo.next_title = `${40 - wins}`
-    titleInfo.rank_up = wins === 35
-  } else if (wins >= 40 && wins < 60) {
-    titleInfo.title = "💥Baş Pehlivan"
-    titleInfo.avatar = "💥"
-    titleInfo.next_title = `${60 - wins}`
-    titleInfo.rank_up = wins === 40
-  } else if (wins >= 60 && wins < 90) {
-    titleInfo.title = "😎Destansı Pehlivan"
-    titleInfo.avatar = "😎"
-    titleInfo.next_title = `${90 - wins}`
-    titleInfo.rank_up = wins === 60
-  } else if (wins >= 90 && wins < 150) {
-    titleInfo.title = "⭐Efsanevi Pehlivan"
-    titleInfo.avatar = "⭐"
-    titleInfo.next_title = `${150 - wins}`
-    titleInfo.rank_up = wins === 90
-  } else if (wins >= 150 && wins < 250) {
-    titleInfo.title = "💎Mega Pehlivan"
-    titleInfo.avatar = "💎"
-    titleInfo.next_title = `${250 - wins}`
-    titleInfo.rank_up = wins === 150
-  } else if (wins >= 250 && wins < 400) {
-    titleInfo.title = "🥇Ultra Pehlivan🥇"
-    titleInfo.avatar = "🥇"
-    titleInfo.next_title = `${400 - wins}`
-    titleInfo.rank_up = wins === 250
-  } else if (wins >= 400 && wins < 600) {
-    titleInfo.title = "🤼‍♂️Pehlivansavar🤼‍♂️"
-    titleInfo.avatar = "🤼‍♂️"
-    titleInfo.next_title = `${600 - wins}`
-    titleInfo.rank_up = wins === 400
-  } else if (wins >= 600 && wins < 800) {
-    titleInfo.title = "🔥Ocak Söndürücü🔥"
-    titleInfo.avatar = "🔥"
-    titleInfo.next_title = `${800 - wins}`
-    titleInfo.rank_up = wins === 600
-  } else if (wins >= 800 && wins < 1000) {
-    titleInfo.title = "⚡Minder Bükücü⚡"
-    titleInfo.avatar = "⚡"
-    titleInfo.next_title = `${1000 - wins}`
-    titleInfo.rank_up = wins === 800
-  } else if (wins >= 1000) {
-    titleInfo.title = "🏆Minder Tanrısı🏆"
-    titleInfo.avatar = "🏆"
-    titleInfo.next_title = null
-    titleInfo.rank_up = wins === 1000
-  }
+    if (wins === 0) {
+        titleInfo.title = "💩Ağır Acemi"
+        titleInfo.avatar = "💩"
+        titleInfo.next_title = "1"
+        titleInfo.rank_up = false
+      } else if (wins >= 1 && wins < 5) {
+        titleInfo.title = "🧻Acemi"
+        titleInfo.avatar = "🧻"
+        titleInfo.next_title = `${5 - wins}`
+        titleInfo.rank_up = wins === 1
+      } else if (wins >= 5 && wins < 10) {
+        titleInfo.title = "🟧Yeni Yetme"
+        titleInfo.avatar = "🟧"
+        titleInfo.next_title = `${10 - wins}`
+        titleInfo.rank_up = wins === 5
+      } else if (wins >= 10 && wins < 15) {
+        titleInfo.title = "🟨Toy"
+        titleInfo.avatar = "🟨"
+        titleInfo.next_title = `${15 - wins}`
+        titleInfo.rank_up = wins === 10
+      } else if (wins >= 15 && wins < 20) {
+        titleInfo.title = "⬜Çakma Pehlivan"
+        titleInfo.avatar = "⬜"
+        titleInfo.next_title = `${20 - wins}`
+        titleInfo.rank_up = wins === 15
+      } else if (wins >= 20 && wins < 25) {
+        titleInfo.title = "⬛Amatör Pehlivan"
+        titleInfo.avatar = "⬛"
+        titleInfo.next_title = `${25 - wins}`
+        titleInfo.rank_up = wins === 20
+      } else if (wins >= 25 && wins < 30) {
+        titleInfo.title = "🟩Pehlivan"
+        titleInfo.avatar = "🟩"
+        titleInfo.next_title = `${30 - wins}`
+        titleInfo.rank_up = wins === 25
+      } else if (wins >= 30 && wins < 35) {
+        titleInfo.title = "👳‍♂️Has Pehlivan"
+        titleInfo.avatar = "👳‍♂️"
+        titleInfo.next_title = `${35 - wins}`
+        titleInfo.rank_up = wins === 30
+      } else if (wins >= 35 && wins < 40) {
+        titleInfo.title = "🤠Ulu Pehlivan"
+        titleInfo.avatar = "🤠"
+        titleInfo.next_title = `${40 - wins}`
+        titleInfo.rank_up = wins === 35
+      } else if (wins >= 40 && wins < 60) {
+        titleInfo.title = "💥Baş Pehlivan"
+        titleInfo.avatar = "💥"
+        titleInfo.next_title = `${60 - wins}`
+        titleInfo.rank_up = wins === 40
+      } else if (wins >= 60 && wins < 90) {
+        titleInfo.title = "😎Destansı Pehlivan"
+        titleInfo.avatar = "😎"
+        titleInfo.next_title = `${90 - wins}`
+        titleInfo.rank_up = wins === 60
+      } else if (wins >= 90 && wins < 150) {
+        titleInfo.title = "⭐Efsanevi Pehlivan"
+        titleInfo.avatar = "⭐"
+        titleInfo.next_title = `${150 - wins}`
+        titleInfo.rank_up = wins === 90
+      } else if (wins >= 150 && wins < 250) {
+        titleInfo.title = "💎Mega Pehlivan"
+        titleInfo.avatar = "💎"
+        titleInfo.next_title = `${250 - wins}`
+        titleInfo.rank_up = wins === 150
+      } else if (wins >= 250 && wins < 400) {
+        titleInfo.title = "🥇Ultra Pehlivan🥇"
+        titleInfo.avatar = "🥇"
+        titleInfo.next_title = `${400 - wins}`
+        titleInfo.rank_up = wins === 250
+      } else if (wins >= 400 && wins < 600) {
+        titleInfo.title = "🤼‍♂️Pehlivansavar🤼‍♂️"
+        titleInfo.avatar = "🤼‍♂️"
+        titleInfo.next_title = `${600 - wins}`
+        titleInfo.rank_up = wins === 400
+      } else if (wins >= 600 && wins < 800) {
+        titleInfo.title = "🔥Ocak Söndürücü🔥"
+        titleInfo.avatar = "🔥"
+        titleInfo.next_title = `${800 - wins}`
+        titleInfo.rank_up = wins === 600
+      } else if (wins >= 1000 && wins < 1085) {
+        titleInfo.title = "☠Hayatsız Ezik☠"
+        titleInfo.avatar = "☠"
+        titleInfo.next_title = `${1085 - wins}`
+        titleInfo.rank_up = wins === 1000
+      } else if (wins >= 1085 && wins < 1300) {
+        titleInfo.title = "🧨Pehlivan Uçurucu🧨"
+        titleInfo.avatar = "🧨"
+        titleInfo.next_title = `${1300 - wins}`
+        titleInfo.rank_up = wins === 1085
+      } else if (wins >= 1300 && wins < 1600) {
+        titleInfo.title = "🎉Pehlivanötesi🎉"
+        titleInfo.avatar = "🎉"
+        titleInfo.next_title = `${1600 - wins}`
+        titleInfo.rank_up = wins === 1300
+      } else if (wins >= 1600 && wins < 2000) {
+        titleInfo.title = "🎹Minder Sanatçısı🎨"
+        titleInfo.avatar = "🎨"
+        titleInfo.next_title = `${2000 - wins}`
+        titleInfo.rank_up = wins === 1600
+      } else if (wins >= 2000 && wins < 2222) {
+        titleInfo.title = "🐻Sumocu Ayı🐻"
+        titleInfo.avatar = "🐻"
+        titleInfo.next_title = `${2222 - wins}`
+        titleInfo.rank_up = wins === 2000
+      } else if (wins >= 2222 && wins < 2500) {
+        titleInfo.title = "👽Uzaylı Pehlivan👽"
+        titleInfo.avatar = "👽"
+        titleInfo.next_title = `${2500 - wins}`
+        titleInfo.rank_up = wins === 2222
+      } else if (wins >= 2500 && wins < 2750) {
+        titleInfo.title = "👑Kral Pehlivan👑"
+        titleInfo.avatar = "👑"
+        titleInfo.next_title = `${2750 - wins}`
+        titleInfo.rank_up = wins === 2500
+      } else if (wins >= 2750 && wins < 3000) {
+        titleInfo.title = "🚀GigaPehlivan🚀"
+        titleInfo.avatar = "🚀"
+        titleInfo.next_title = `${3000 - wins}`
+        titleInfo.rank_up = wins === 2750
+      } else if (wins >= 3000 && wins < 3133) {
+        titleInfo.title = "🐮Katıksız Sığır🐮"
+        titleInfo.avatar = "🐮"
+        titleInfo.next_title = `${3133 - wins}`
+        titleInfo.rank_up = wins === 3000
+      } else if (wins >= 3133 && wins < 3333) {
+        titleInfo.title = "🧠Beyni Yanık🧠"
+        titleInfo.avatar = "🧠"
+        titleInfo.next_title = `${3333 - wins}`
+        titleInfo.rank_up = wins === 3133
+      } else if (wins >= 3333 && wins < 3555) {
+        titleInfo.title = "👀İşsiz Avare👀"
+        titleInfo.avatar = "👀"
+        titleInfo.next_title = `${3555 - wins}`
+        titleInfo.rank_up = wins === 3333
+      } else if (wins >= 3555) {
+        titleInfo.title = "🏆Minder Tanrısı🏆"
+        titleInfo.avatar = "🏆"
+        titleInfo.next_title = null
+        titleInfo.rank_up = wins === 3555
+      }
 
   return titleInfo;
 }
@@ -1920,6 +1970,7 @@ window.parent.get_all_users = get_all_users;
               noPlayer: true,
               public: true,
               geo : {"code": "TR", "lat" : 39.925533, "lon" : 32.866287}});
+              window.room = window.parent.room;
               var a = window.parent.onHBLoaded;
               null != a && a();
           });

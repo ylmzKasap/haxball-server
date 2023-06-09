@@ -6,7 +6,7 @@ module.exports = async function get_all_users(pool) {
       users
   `
   const user_info = await pool.query(getQuery)
-    .then(res => res.rows).catch((err) => err);
+    .then(res => res.rows).catch(() => false);
 
   return user_info;
 }
