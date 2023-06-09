@@ -152,6 +152,11 @@ const get_title = (wins) => {
         titleInfo.avatar = "🔥"
         titleInfo.next_title = `${800 - wins}`
         titleInfo.rank_up = wins === 600
+      } else if (wins >= 800 && wins < 1000) {
+        titleInfo.title = "⚡Minder Bükücü⚡"
+        titleInfo.avatar = "⚡"
+        titleInfo.next_title = `${1000 - wins}`
+        titleInfo.rank_up = wins === 800
       } else if (wins >= 1000 && wins < 1085) {
         titleInfo.title = "☠Hayatsız Ezik☠"
         titleInfo.avatar = "☠"
