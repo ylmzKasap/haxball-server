@@ -11,7 +11,14 @@ module.exports = async (req, res) => {
   if (!auth ||
     !username ||
     [auth, username].some(x => typeof x !== "string")) {
-      return res.status(400).send()
+      return res.status(400).send({
+        "user_auth": "",
+        "is_admin": false,
+        "is_super_admin": false,
+        "wins": "0",
+        "loses": "0",
+        "knockouts": "0"
+    })
   }
 
   const user_info = await get_user_info(db, auth);
