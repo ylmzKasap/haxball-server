@@ -9,7 +9,7 @@ module.exports = async function get_user_info(pool, user_auth) {
   `
 
   const user_info = await pool.query(getQuery, [user_auth])
-    .then(res => res.rows[0]).catch(() => false);
+    .then(res => res.rows[0]).catch((err) => err);
 
   return user_info;
 }
