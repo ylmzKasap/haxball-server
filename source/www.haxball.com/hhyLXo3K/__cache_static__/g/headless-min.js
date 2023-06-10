@@ -4091,8 +4091,15 @@ window.parent.get_all_users = get_all_users;
                     xgravity: ((parseInt(j[1]))*realSpeed+(parseInt(j[2]))*-realSpeed)*kicking*diagonal,
                     ygravity: ((parseInt(j[3]))*realSpeed+(parseInt(j[4]))*-realSpeed)*kicking*diagonal
                   }
-                  window.parent.PlayerList[this.A].xinput = jj.xgravity == 0 ? 0 : Math.abs(jj.xgravity)/jj.xgravity
-                  window.parent.PlayerList[this.A].yinput = jj.ygravity == 0 ? 0 : Math.abs(jj.ygravity)/jj.ygravity
+                  let txi = 0;
+                  let tyi = 0;
+                  if (parseInt(j[1]) == 1) txi++
+                  if (parseInt(j[2]) == 1) txi--
+                  if (parseInt(j[3]) == 1) tyi++
+                  if (parseInt(j[4]) == 1) tyi--
+
+                  window.parent.PlayerList[this.A].xinput = txi
+                  window.parent.PlayerList[this.A].yinput = tyi
                   
                   window.parent.room.setPlayerDiscProperties(this.A, jj)
             }
