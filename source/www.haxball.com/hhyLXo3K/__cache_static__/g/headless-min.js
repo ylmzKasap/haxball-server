@@ -4081,7 +4081,17 @@ window.parent.get_all_users = get_all_users;
           var j = this.input.toString(2).padStart(5,0).split("")
           let kicking = j[0] == "1" ? 0.7 : 1
           let diagonal = (j[1] == "1" ^ j[2] == "1")&&(j[3] == "1" ^ j[4] == "1") ? 1/Math.sqrt(2) : 1
-
+          let txi = 0;
+          let tyi = 0;
+          if (window.parent.PlayerList[this.A] != undefined) {
+          if (parseInt(j[1]) == 1) txi++
+          if (parseInt(j[2]) == 1) txi--
+          if (parseInt(j[3]) == 1) tyi++
+          if (parseInt(j[4]) == 1) tyi--
+          
+          window.parent.PlayerList[this.A].xinput = txi
+          window.parent.PlayerList[this.A].yinput = tyi
+            }
           let playerDisc = window.parent.room.getPlayerDiscProperties(this.A)
             if (playerDisc != undefined) {
                 let speedMultiplier = speedCalculator(playerDisc.radius)
@@ -4091,15 +4101,7 @@ window.parent.get_all_users = get_all_users;
                     xgravity: ((parseInt(j[1]))*realSpeed+(parseInt(j[2]))*-realSpeed)*kicking*diagonal,
                     ygravity: ((parseInt(j[3]))*realSpeed+(parseInt(j[4]))*-realSpeed)*kicking*diagonal
                   }
-                  let txi = 0;
-                  let tyi = 0;
-                  if (parseInt(j[1]) == 1) txi++
-                  if (parseInt(j[2]) == 1) txi--
-                  if (parseInt(j[3]) == 1) tyi++
-                  if (parseInt(j[4]) == 1) tyi--
-
-                  window.parent.PlayerList[this.A].xinput = txi
-                  window.parent.PlayerList[this.A].yinput = tyi
+   
                   
                   window.parent.room.setPlayerDiscProperties(this.A, jj)
             }
