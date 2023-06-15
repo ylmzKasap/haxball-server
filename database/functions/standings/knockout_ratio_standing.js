@@ -16,14 +16,14 @@ module.exports = async function get_knockout_ratio_standing(pool, user_auth) {
       ROW_NUMBER () OVER (ORDER BY knockout_ratio DESC, wins DESC, loses ASC) AS standing
     FROM
       ratio_table
-    WHERE wins + loses > 30
+    WHERE wins + loses > 100
   ),
   all_players AS (
     SELECT
       COUNT(*) as total_players
     FROM
       users
-    WHERE wins + loses > 30
+    WHERE wins + loses > 100
   )
   SELECT
     user_auth, wins, loses, knockouts, knockout_ratio, standing, total_players
