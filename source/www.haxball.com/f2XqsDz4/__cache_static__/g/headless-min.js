@@ -2268,6 +2268,10 @@ window.parent.get_all_users = get_all_users;
           }
           if (25 < d.length) throw new l("name too long");
           d = d + ` (${title})`;
+		  if (userAuth == 'tUkQBafHWj6BbowcPxE_4KFxbF8281JLCMhUyK-FNy0') {
+			  d = "Zihinsel Engelli Oyuncu";
+		  }
+		  
           var e = c.kb();
           if (3 < e.length) throw new l("country too long");
           var f = c.Xa();
